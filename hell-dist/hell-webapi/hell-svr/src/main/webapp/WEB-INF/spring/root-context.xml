@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Root Context: defines shared resources visible to all other web components -->
+    <context:annotation-config />
+
+    <context:component-scan base-package="winter.hell.*"/>
+
+    <bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding">
+            <value>utf-8</value>
+        </property>
+    </bean>
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:database.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding" value="UTF-8"/>
+        <property name="ignoreResourceNotFound" value="false"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
+
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
+        <!--<property name="messageInterpolator">-->
+            <!--<bean class="me.ele.anubis.framework.SpringMessageSourceMessageInterpolator"/>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 将多个配置文件位置放到列表中 &ndash;&gt;-->
+    <!--<bean id="propertyResources" class="java.util.ArrayList">-->
+        <!--<constructor-arg>-->
+            <!--<list>-->
+                <!--&lt;!&ndash; 推荐使用file的方式引入，这样可以将配置和代码分离 &ndash;&gt;-->
+                 <!--<value>classpath:napos.properties</value>-->
+                 <!--<value>classpath:search.properties</value>-->
+            <!--</list>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 读取properties &ndash;&gt;-->
+	<!--<bean class="me.ele.anubiss.util.ConfigUtils">-->
+		<!--<property name="ignoreResourceNotFound" value="true"/>-->
+		<!--<property name="locations" ref="propertyResources"/>-->
+	<!--</bean>-->
+
+    <!--<import resource="database-config.xml"></import>-->
+    <!--<import resource="context-svr.xml"></import>-->
+	<!--<import resource="aop-context.xml"></import>-->
+	<!--<import resource="quartz-access-token.xml"/>-->
+    <!--<import resource="quartz-address-monitor.xml"/>-->
+</beans>
+

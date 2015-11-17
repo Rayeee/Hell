@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>winter</groupId>
+        <artifactId>hell-webapi</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>hell-svr</artifactId>
+    <packaging>war</packaging>
+    <version>${hell.version}</version>
+    <name>hell-svr</name>
+
+    <properties>
+        <commons-io-version>2.4</commons-io-version>
+        <commons-fileupload-version>1.2.2</commons-fileupload-version>
+        <aspectjrt-version>1.6.10</aspectjrt-version>
+        <!-- quartz -->
+        <quartz.version>2.2.1</quartz.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- self  -->
+        <dependency>
+            <groupId>winter</groupId>
+            <artifactId>hell-January-impl</artifactId>
+            <version>${hell.version}</version>
+        </dependency>
+
+        <!-- clients-->
+        <!--<dependency>-->
+            <!--<groupId>me.ele</groupId>-->
+            <!--<artifactId>anubis-mq-client</artifactId>-->
+            <!--<version>${hell.version}</version>-->
+        <!--</dependency>-->
+
+        <!-- Quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz.version}</version>
+            <!--<exclusions>-->
+            <!--<exclusion>					-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>hell-svr</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

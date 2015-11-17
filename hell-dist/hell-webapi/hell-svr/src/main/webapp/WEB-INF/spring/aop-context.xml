@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+            http://www.springframework.org/schema/aop
+               http://www.springframework.org/schema/aop/spring-aop-4.0.xsd ">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!--<bean-->
+		<!--class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
+		<!--<property name="beanNames">-->
+			<!--<list>-->
+				<!--<value>checkSignatureController</value>-->
+				<!--<value>addressController</value>-->
+				<!--<value>orderController</value>-->
+			<!--</list>-->
+		<!--</property>-->
+		<!--<property name="interceptorNames">-->
+			<!--<list>-->
+				<!--<value>checkSignatureInterceptor</value>-->
+			<!--</list>-->
+		<!--</property>-->
+		<!--<property name="proxyTargetClass" value="true"></property>-->
+	<!--</bean>-->
+</beans>
+
