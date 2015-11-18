@@ -30,13 +30,6 @@
             <version>${hell.version}</version>
         </dependency>
 
-        <!-- clients-->
-        <!--<dependency>-->
-            <!--<groupId>me.ele</groupId>-->
-            <!--<artifactId>anubis-mq-client</artifactId>-->
-            <!--<version>${hell.version}</version>-->
-        <!--</dependency>-->
-
         <!-- Quartz -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
