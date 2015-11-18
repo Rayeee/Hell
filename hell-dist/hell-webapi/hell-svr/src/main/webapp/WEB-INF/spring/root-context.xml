@@ -63,7 +63,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <!--<property name="locations" ref="propertyResources"/>-->
     <!--</bean>-->
 
-    <!--<import resource="database-config.xml"></import>-->
+    <import resource="database-config.xml"></import>
     <!--<import resource="context-svr.xml"></import>-->
     <!--<import resource="aop-context.xml"></import>-->
     <!--<import resource="quartz-access-token.xml"/>-->

@@ -30,6 +30,12 @@
             <version>${hell.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>winter</groupId>
+            <artifactId>hell-common</artifactId>
+            <version>${hell.version}</version>
+        </dependency>
+
         <!-- Quartz -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>

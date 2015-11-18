@@ -19,7 +19,7 @@
         <!--<redis.vesion>2.6.0</redis.vesion>-->
         <http-client-vesion>4.2.5</http-client-vesion>
         <org-apache-commons-version>3.3.2</org-apache-commons-version>
-        <slf4j-version>1.7.5</slf4j-version>
+        <!--<slf4j-version>1.7.5</slf4j-version>-->
     </properties>
 
     <dependencies>
@@ -49,6 +49,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -63,13 +69,22 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- log -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-version}</version>
-            <scope>compile</scope>
+            <version>1.7.7</version>
         </dependency>
-
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.2</version>
+        </dependency>
         <!-- redis -->
         <!--<dependency>-->
             <!--<groupId>redis.clients</groupId>-->
