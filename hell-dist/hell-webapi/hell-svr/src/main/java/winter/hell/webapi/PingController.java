@@ -13,6 +13,7 @@ import winter.hell.framework.ResponseEntity;
 import winter.hell.service.TestService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,6 +40,12 @@ public class PingController {
             return ResponseEntity.fail(e.getErrorCode(), e.getLocalizedMessage(),null);
         }
         return ResponseEntity.success(testUserDto);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/ping", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public ResponseEntity<?> ping(){
+        return ResponseEntity.success("success");
     }
 
 }
