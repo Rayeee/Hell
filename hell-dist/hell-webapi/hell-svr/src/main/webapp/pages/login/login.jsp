@@ -24,11 +24,13 @@
   <link rel="stylesheet" href="${rt}/resources/css/login/supersized.css">
   <link rel="stylesheet" href="${rt}/resources/css/login/style.css">
   <script src="${rt}/resources/js/common/jquery-1.11.3.js" ></script>
+  <script src="${rt}/resources/js/common/jquery-cookie-1.4.0.zip" ></script>
   <script src="${rt}/resources/js/common/supersized.3.2.7.min.js" ></script>
   <script src="${rt}/resources/js/common/supersized-init.js" ></script>
   <script src="${rt}/resources/js/common/scripts.js" ></script>
 
   <script type="text/javascript">
+    <%--$.cookie("alive","on",{expires:1,path:"${rt}/pages"});--%>
     function login(){
       $(".userLogin").submit();
     }
