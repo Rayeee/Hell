@@ -1,4 +1,4 @@
-package winter.hell.model;
+package winter.hell.auth.model;
 
 public class TestUser {
     private Integer id;

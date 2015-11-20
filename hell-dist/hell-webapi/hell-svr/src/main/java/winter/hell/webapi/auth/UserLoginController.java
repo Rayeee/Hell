@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import winter.hell.webapi.auth.dto.RegisterLoginDto;
+import winter.hell.auth.dto.LoginParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,10 +22,8 @@ public class UserLoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelAndView login(@RequestParam String username,@RequestParam String password, HttpSession session){
-        logger.info("user login and the username is {}", username);
-        session.setAttribute(username, 1);
-        System.out.println(session.getAttribute(username));
+    public ModelAndView login(@RequestBody LoginParam loginParam, HttpSession session){
+        logger.info("user login and the username is {}", loginParam.getUser_name());
         ModelAndView mav = new ModelAndView("/pages/index");
         return mav;
     }

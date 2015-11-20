@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="winter.hell.mapping.TestUserMapper" >
-  <resultMap id="BaseResultMap" type="winter.hell.model.TestUser" >
+<mapper namespace="winter.hell.auth.mapping.TestUserMapper" >
+  <resultMap id="BaseResultMap" type="winter.hell.auth.model.TestUser" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -19,13 +19,13 @@
     delete from tb_test
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="winter.hell.model.TestUser" >
+  <insert id="insert" parameterType="winter.hell.auth.model.TestUser" >
     insert into tb_test (id, user_name, password
       )
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="winter.hell.model.TestUser" >
+  <insert id="insertSelective" parameterType="winter.hell.auth.model.TestUser" >
     insert into tb_test
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="winter.hell.model.TestUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="winter.hell.auth.model.TestUser" >
     update tb_test
     <set >
       <if test="userName != null" >
@@ -62,7 +62,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="winter.hell.model.TestUser" >
+  <update id="updateByPrimaryKey" parameterType="winter.hell.auth.model.TestUser" >
     update tb_test
     set user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}

@@ -1,6 +1,6 @@
-package winter.hell.mapping;
+package winter.hell.auth.mapping;
 
-import winter.hell.model.TestUser;
+import winter.hell.auth.model.TestUser;
 
 public interface TestUserMapper {
     int deleteByPrimaryKey(Integer id);
