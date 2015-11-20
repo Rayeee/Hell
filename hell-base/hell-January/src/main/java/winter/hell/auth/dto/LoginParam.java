@@ -34,6 +34,10 @@ public class LoginParam {
         this.password = password;
     }
 
+    public LoginParam() {
+
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("LoginParam{");
