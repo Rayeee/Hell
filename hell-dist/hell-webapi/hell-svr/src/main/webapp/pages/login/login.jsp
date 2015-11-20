@@ -2,13 +2,10 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-    request.setAttribute("rt", path);
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <% %>
-    <base href="<%=basePath%>">
     <title>用户登陆</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -16,9 +13,7 @@
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!--
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    -->
+
     <jsp:include page="../common/header.jsp"/>
     <script type="text/javascript">
         //localStorage.setItem("token","123");
@@ -32,12 +27,6 @@
     <input type="text" name="username" id="username" class="username" placeholder="请输入您的用户名！"/>
     <input type="password" name="password" id="password" class="password" placeholder="请输入您的用户密码！"/>
     <button type="submit" class="submit_button" id="login_butt">登录</button>
-    <%--<form class="userLogin" action="${rt}/login" method="post" onsubmit="return param_check();">--%>
-        <%--<input type="text" name="username" id="username" class="username" value="${username}" placeholder="请输入您的用户名！"/>--%>
-        <%--<input type="password" name="password" id="password" class="password" value="${password}"--%>
-               <%--placeholder="请输入您的用户密码！"/>--%>
-        <%--<button type="submit" class="submit_button" onClick="login();">登录</button>--%>
-    <%--</form>--%>
 </div>
 </body>
 </html>

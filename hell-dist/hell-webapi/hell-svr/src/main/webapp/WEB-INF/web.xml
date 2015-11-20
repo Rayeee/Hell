@@ -11,9 +11,6 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             /WEB-INF/spring/root-context.xml
-            <!--/WEB-INF/spring/context-svr.xml-->
-            <!--/WEB-INF/spring/quartz-context.xml-->
-            <!--/WEB-INF/spring/database-config.xml-->
         </param-value>
     </context-param>
     <listener>
@@ -27,7 +24,6 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>
                 /WEB-INF/spring/servlet-context.xml
-                /WEB-INF/spring/aop-context.xml
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>

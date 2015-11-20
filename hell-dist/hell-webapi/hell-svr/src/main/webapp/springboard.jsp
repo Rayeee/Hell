@@ -11,7 +11,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   -->
   <title>Hell</title>
-  <jsp:forward page="${rt}/pages/login/login.jsp"/>
+  <jsp:forward page="/pages/login/login.jsp"/>
 </head>
 <body>
 <h1>Welcome!</h1>

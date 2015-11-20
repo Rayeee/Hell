@@ -3,6 +3,9 @@
  */
 /* 该文件用于实现用户登录，包括cookie，token等验证。 */
 
+/* 本机调用地址 */
+window.base_url = "http://localhost:8080/hell-webapi"
+
 $(function(){
     /* 登陆按钮点击事件 */
     $("#login_butt").click(function(){
@@ -35,18 +38,20 @@ function param_check() {
 /* 登录 */
 function login() {
     //用户名
-    var user_name = $("#username").val();
-    alert(user_name);
+    var userName = $("#username").val();
     //密码
     var password = hex_md5($("#password").val());
+    var request = {
+        user_name:userName,
+        password:password
+    };
+    var requestStr = $.toJSON(request);
     $.ajax({
         type:"POST",
-        url:"${rt}/login",
-        data:{
-            user_name:user_name,
-            password:password
-        },
-        datatype:"json",
+        url:base_url+"/login",
+        data:requestStr,
+        dataType:"json",
+        contentType:"application/json",
         success:function(data){
             //将cookie中的token存入cookie
             alert(123);

@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/mvc"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:context="http://www.springframework.org/schema/context"
-             xmlns:aop="http://www.springframework.org/schema/aop"
-             xsi:schemaLocation="http://www.springframework.org/schema/mvc
-            http://www.springframework.org/schema/mvc/spring-mvc.xsd
-		    http://www.springframework.org/schema/beans
-			http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-			http://www.springframework.org/schema/context
-			http://www.springframework.org/schema/context/spring-context-3.1.xsd
-		    http://www.springframework.org/schema/aop
-			http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+            http://www.springframework.org/schema/aop   
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd ">
 
-    <!-- DispatcherServlet Context: defines this servlet's request-processing
-        infrastructure -->
-    <!-- Enables the Spring MVC @Controller programming model -->
-    <!--<default-servlet-handler/>-->
-    <!--<context:component-scan base-package="me.ele.anubis" use-default-filters="false">-->
-    	<!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
-    <!--</context:component-scan>-->
+    <context:component-scan base-package="winter.hell.webapi" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
-    <!--<context:component-scan base-package="me.ele.anubis" use-default-filters="false">-->
-        <!--<context:include-filter type="annotation" expression="me.ele.anubis.http.HttpUtil"/>-->
-    <!--</context:component-scan>-->
-
-    <!--<annotation-driven validator="validator">-->
-        <!--<argument-resolvers>-->
-            <!--<beans:bean-->
-                    <!--class="me.ele.anubis.framework.ContextWebArgumentResolver">-->
-            <!--</beans:bean>-->
-        <!--</argument-resolvers>-->
-        <!--<message-converters>-->
-            <!--<beans:ref bean="jacksonMessageConverter" />-->
-        <!--</message-converters>-->
-    <!--</annotation-driven>-->
+    <!-- 增加对静态资源的映射，但是不能访问WEB-INF下的资源 -->
+    <mvc:default-servlet-handler/>
 
     <!-- 启动JSON格式的配置 -->
-    <beans:bean id="jacksonMessageConverter"
-                class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    <bean id="jacksonMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <!-- 解决 HttpMediaTypeNotAcceptableException: Could not find acceptable
             representation -->
-        <beans:property name="supportedMediaTypes">
-            <beans:list>
-                <beans:value>text/plain;charset=UTF-8</beans:value>
-                <beans:value>text/html;charset=UTF-8</beans:value>
-                <beans:value>application/json;charset=UTF-8</beans:value>
-            </beans:list>
-        </beans:property>
-    </beans:bean>
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/plain;charset=UTF-8</value>
+                <value>text/html;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
 
-</beans:beans>
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="messageInterpolator">
+            <bean class="winter.hell.framework.SpringMessageSourceMessageInterpolator" />
+        </property>
+    </bean>
+
+    <mvc:annotation-driven validator="validator">
+        <mvc:argument-resolvers>
+            <bean class="winter.hell.framework.ContextWebArgumentResolver">
+            </bean>
+        </mvc:argument-resolvers>
+        <mvc:message-converters>
+            <ref bean="jacksonMessageConverter" />
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
+</beans>
+

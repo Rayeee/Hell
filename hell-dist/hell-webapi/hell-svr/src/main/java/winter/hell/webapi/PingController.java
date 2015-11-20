@@ -12,7 +12,7 @@ import winter.hell.framework.ResponseEntity;
 /**
  * Created by ZGY on 15/11/18.
  */
-@Controller("/pingController")
+@Controller("pingController")
 @RequestMapping("/hell-webapi")
 public class PingController {
 
