@@ -3,7 +3,7 @@ package winter.hell.auth.dto;
 /**
  * Created by ZGY on 15/11/20.
  */
-public class LoginParam {
+public class LoginCheckParam {
 
     private String user_name;
 
@@ -25,16 +25,16 @@ public class LoginParam {
         this.password = password;
     }
 
-    public LoginParam(String user_name) {
+    public LoginCheckParam(String user_name) {
         this.user_name = user_name;
     }
 
-    public LoginParam(String user_name, String password) {
+    public LoginCheckParam(String user_name, String password) {
         this.user_name = user_name;
         this.password = password;
     }
 
-    public LoginParam() {
+    public LoginCheckParam() {
 
     }
 

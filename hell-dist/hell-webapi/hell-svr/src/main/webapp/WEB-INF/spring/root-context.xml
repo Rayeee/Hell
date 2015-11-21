@@ -32,6 +32,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
     <!-- 对模型视图名称的解析，在请求时模型视图名称添加前后缀 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp" />
 
+    <bean id="webAPISecurityFilter" class="winter.hell.framework.WebAPISecurityFilter"/>
 
     <import resource="database-config.xml"></import>
 </beans>

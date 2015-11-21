@@ -49,7 +49,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="winter.hell.*.mapping"/>
+        <property name="basePackage" value="winter.hell.**.mapping"/>
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
