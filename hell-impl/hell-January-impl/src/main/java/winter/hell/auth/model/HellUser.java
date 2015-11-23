@@ -41,6 +41,8 @@ public class HellUser {
 
     private Integer livingCityId;
 
+    private Integer isValid;
+
     private Timestamp registerAt;
 
     private Timestamp createdAt;
@@ -191,6 +193,14 @@ public class HellUser {
         this.livingCityId = livingCityId;
     }
 
+    public Integer getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(Integer isValid) {
+        this.isValid = isValid;
+    }
+
     public Timestamp getRegisterAt() {
         return registerAt;
     }
@@ -219,7 +229,7 @@ public class HellUser {
 
     }
 
-    public HellUser(Integer id, String mobile, Integer mobileCheck, Integer gender, String headimage, Integer headimageCheck, Timestamp birthday, String email, String account, String password, String salt, String signature, Integer inviterId, BigDecimal height, String job, String salary, Integer hometownCityId, Integer livingCityId, Timestamp registerAt, Timestamp createdAt, Timestamp updatedAt) {
+    public HellUser(Integer id, String mobile, Integer mobileCheck, Integer gender, String headimage, Integer headimageCheck, Timestamp birthday, String email, String account, String password, String salt, String signature, Integer inviterId, BigDecimal height, String job, String salary, Integer hometownCityId, Integer livingCityId, Integer isValid, Timestamp registerAt, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.mobile = mobile;
         this.mobileCheck = mobileCheck;
@@ -238,6 +248,7 @@ public class HellUser {
         this.salary = salary;
         this.hometownCityId = hometownCityId;
         this.livingCityId = livingCityId;
+        this.isValid = isValid;
         this.registerAt = registerAt;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -264,6 +275,7 @@ public class HellUser {
         sb.append(", salary='").append(salary).append('\'');
         sb.append(", hometownCityId=").append(hometownCityId);
         sb.append(", livingCityId=").append(livingCityId);
+        sb.append(", isValid=").append(isValid);
         sb.append(", registerAt=").append(registerAt);
         sb.append(", createdAt=").append(createdAt);
         sb.append(", updatedAt=").append(updatedAt);

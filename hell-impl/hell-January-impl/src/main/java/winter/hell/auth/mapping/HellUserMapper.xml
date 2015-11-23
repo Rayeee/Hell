@@ -1,289 +1,300 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="winter.hell.auth.mapping.HellUserMapper" >
-  <resultMap id="BaseResultMap" type="winter.hell.auth.model.HellUser" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
-    <result column="mobile_check" property="mobileCheck" jdbcType="TINYINT" />
-    <result column="gender" property="gender" jdbcType="TINYINT" />
-    <result column="headimage" property="headimage" jdbcType="VARCHAR" />
-    <result column="headimage_check" property="headimageCheck" jdbcType="TINYINT" />
-    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="account" property="account" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="salt" property="salt" jdbcType="VARCHAR" />
-    <result column="signature" property="signature" jdbcType="VARCHAR" />
-    <result column="inviter_id" property="inviterId" jdbcType="INTEGER" />
-    <result column="height" property="height" jdbcType="DECIMAL" />
-    <result column="job" property="job" jdbcType="VARCHAR" />
-    <result column="salary" property="salary" jdbcType="DECIMAL" />
-    <result column="hometown_city_id" property="hometownCityId" jdbcType="INTEGER" />
-    <result column="living_city_id" property="livingCityId" jdbcType="INTEGER" />
-    <result column="register_at" property="registerAt" jdbcType="TIMESTAMP" />
-    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
-    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, mobile, mobile_check, gender, headimage, headimage_check, birthday, email, account, 
-    password, salt, signature, inviter_id, height, job, salary, hometown_city_id, living_city_id, 
-    register_at, created_at, updated_at
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from hell_user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from hell_user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="winter.hell.auth.model.HellUser" >
-    insert into hell_user (id, mobile, mobile_check, 
-      gender, headimage, headimage_check, 
-      birthday, email, account, 
-      password, salt, signature, 
-      inviter_id, height, job, 
-      salary, hometown_city_id, living_city_id, 
-      register_at, created_at, updated_at
-      )
-    values (#{id,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, #{mobileCheck,jdbcType=TINYINT}, 
-      #{gender,jdbcType=TINYINT}, #{headimage,jdbcType=VARCHAR}, #{headimageCheck,jdbcType=TINYINT}, 
-      #{birthday,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, 
-      #{inviterId,jdbcType=INTEGER}, #{height,jdbcType=DECIMAL}, #{job,jdbcType=VARCHAR}, 
-      #{salary,jdbcType=DECIMAL}, #{hometownCityId,jdbcType=INTEGER}, #{livingCityId,jdbcType=INTEGER}, 
-      #{registerAt,jdbcType=TIMESTAMP}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="winter.hell.auth.model.HellUser" >
-    insert into hell_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="mobile != null" >
-        mobile,
-      </if>
-      <if test="mobileCheck != null" >
-        mobile_check,
-      </if>
-      <if test="gender != null" >
-        gender,
-      </if>
-      <if test="headimage != null" >
-        headimage,
-      </if>
-      <if test="headimageCheck != null" >
-        headimage_check,
-      </if>
-      <if test="birthday != null" >
-        birthday,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="account != null" >
-        account,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="salt != null" >
-        salt,
-      </if>
-      <if test="signature != null" >
-        signature,
-      </if>
-      <if test="inviterId != null" >
-        inviter_id,
-      </if>
-      <if test="height != null" >
-        height,
-      </if>
-      <if test="job != null" >
-        job,
-      </if>
-      <if test="salary != null" >
-        salary,
-      </if>
-      <if test="hometownCityId != null" >
-        hometown_city_id,
-      </if>
-      <if test="livingCityId != null" >
-        living_city_id,
-      </if>
-      <if test="registerAt != null" >
-        register_at,
-      </if>
-      <if test="createdAt != null" >
-        created_at,
-      </if>
-      <if test="updatedAt != null" >
-        updated_at,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="mobile != null" >
-        #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="mobileCheck != null" >
-        #{mobileCheck,jdbcType=TINYINT},
-      </if>
-      <if test="gender != null" >
-        #{gender,jdbcType=TINYINT},
-      </if>
-      <if test="headimage != null" >
-        #{headimage,jdbcType=VARCHAR},
-      </if>
-      <if test="headimageCheck != null" >
-        #{headimageCheck,jdbcType=TINYINT},
-      </if>
-      <if test="birthday != null" >
-        #{birthday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null" >
-        #{account,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="salt != null" >
-        #{salt,jdbcType=VARCHAR},
-      </if>
-      <if test="signature != null" >
-        #{signature,jdbcType=VARCHAR},
-      </if>
-      <if test="inviterId != null" >
-        #{inviterId,jdbcType=INTEGER},
-      </if>
-      <if test="height != null" >
-        #{height,jdbcType=DECIMAL},
-      </if>
-      <if test="job != null" >
-        #{job,jdbcType=VARCHAR},
-      </if>
-      <if test="salary != null" >
-        #{salary,jdbcType=DECIMAL},
-      </if>
-      <if test="hometownCityId != null" >
-        #{hometownCityId,jdbcType=INTEGER},
-      </if>
-      <if test="livingCityId != null" >
-        #{livingCityId,jdbcType=INTEGER},
-      </if>
-      <if test="registerAt != null" >
-        #{registerAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdAt != null" >
-        #{createdAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatedAt != null" >
-        #{updatedAt,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="winter.hell.auth.model.HellUser" >
-    update hell_user
-    <set >
-      <if test="mobile != null" >
-        mobile = #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="mobileCheck != null" >
+    <resultMap id="BaseResultMap" type="winter.hell.auth.model.HellUser" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="mobile_check" property="mobileCheck" jdbcType="TINYINT" />
+        <result column="gender" property="gender" jdbcType="TINYINT" />
+        <result column="headimage" property="headimage" jdbcType="VARCHAR" />
+        <result column="headimage_check" property="headimageCheck" jdbcType="TINYINT" />
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="account" property="account" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="salt" property="salt" jdbcType="VARCHAR" />
+        <result column="signature" property="signature" jdbcType="VARCHAR" />
+        <result column="inviter_id" property="inviterId" jdbcType="INTEGER" />
+        <result column="height" property="height" jdbcType="DECIMAL" />
+        <result column="job" property="job" jdbcType="VARCHAR" />
+        <result column="salary" property="salary" jdbcType="DECIMAL" />
+        <result column="hometown_city_id" property="hometownCityId" jdbcType="INTEGER" />
+        <result column="living_city_id" property="livingCityId" jdbcType="INTEGER" />
+        <result column="is_valid" property="isValid" jdbcType="TINYINT" />
+        <result column="register_at" property="registerAt" jdbcType="TIMESTAMP" />
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, mobile, mobile_check, gender, headimage, headimage_check, birthday, email, account,
+        password, salt, signature, inviter_id, height, job, salary, hometown_city_id, living_city_id,
+        is_valid, register_at, created_at, updated_at
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from hell_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from hell_user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="winter.hell.auth.model.HellUser" >
+        insert into hell_user (id, mobile, mobile_check,
+        gender, headimage, headimage_check,
+        birthday, email, account,
+        password, salt, signature,
+        inviter_id, height, job,
+        salary, hometown_city_id, living_city_id,
+        is_valid, register_at, created_at,
+        updated_at)
+        values (#{id,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, #{mobileCheck,jdbcType=TINYINT},
+        #{gender,jdbcType=TINYINT}, #{headimage,jdbcType=VARCHAR}, #{headimageCheck,jdbcType=TINYINT},
+        #{birthday,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR},
+        #{inviterId,jdbcType=INTEGER}, #{height,jdbcType=DECIMAL}, #{job,jdbcType=VARCHAR},
+        #{salary,jdbcType=DECIMAL}, #{hometownCityId,jdbcType=INTEGER}, #{livingCityId,jdbcType=INTEGER},
+        #{isValid,jdbcType=TINYINT}, #{registerAt,jdbcType=TIMESTAMP}, #{createdAt,jdbcType=TIMESTAMP},
+        #{updatedAt,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="winter.hell.auth.model.HellUser" >
+        insert into hell_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="mobile != null" >
+                mobile,
+            </if>
+            <if test="mobileCheck != null" >
+                mobile_check,
+            </if>
+            <if test="gender != null" >
+                gender,
+            </if>
+            <if test="headimage != null" >
+                headimage,
+            </if>
+            <if test="headimageCheck != null" >
+                headimage_check,
+            </if>
+            <if test="birthday != null" >
+                birthday,
+            </if>
+            <if test="email != null" >
+                email,
+            </if>
+            <if test="account != null" >
+                account,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="salt != null" >
+                salt,
+            </if>
+            <if test="signature != null" >
+                signature,
+            </if>
+            <if test="inviterId != null" >
+                inviter_id,
+            </if>
+            <if test="height != null" >
+                height,
+            </if>
+            <if test="job != null" >
+                job,
+            </if>
+            <if test="salary != null" >
+                salary,
+            </if>
+            <if test="hometownCityId != null" >
+                hometown_city_id,
+            </if>
+            <if test="livingCityId != null" >
+                living_city_id,
+            </if>
+            <if test="isValid != null" >
+                is_valid,
+            </if>
+            <if test="registerAt != null" >
+                register_at,
+            </if>
+            <if test="createdAt != null" >
+                created_at,
+            </if>
+            <if test="updatedAt != null" >
+                updated_at,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="mobile != null" >
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileCheck != null" >
+                #{mobileCheck,jdbcType=TINYINT},
+            </if>
+            <if test="gender != null" >
+                #{gender,jdbcType=TINYINT},
+            </if>
+            <if test="headimage != null" >
+                #{headimage,jdbcType=VARCHAR},
+            </if>
+            <if test="headimageCheck != null" >
+                #{headimageCheck,jdbcType=TINYINT},
+            </if>
+            <if test="birthday != null" >
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="email != null" >
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null" >
+                #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null" >
+                #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null" >
+                #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="inviterId != null" >
+                #{inviterId,jdbcType=INTEGER},
+            </if>
+            <if test="height != null" >
+                #{height,jdbcType=DECIMAL},
+            </if>
+            <if test="job != null" >
+                #{job,jdbcType=VARCHAR},
+            </if>
+            <if test="salary != null" >
+                #{salary,jdbcType=DECIMAL},
+            </if>
+            <if test="hometownCityId != null" >
+                #{hometownCityId,jdbcType=INTEGER},
+            </if>
+            <if test="livingCityId != null" >
+                #{livingCityId,jdbcType=INTEGER},
+            </if>
+            <if test="isValid != null" >
+                #{isValid,jdbcType=TINYINT},
+            </if>
+            <if test="registerAt != null" >
+                #{registerAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdAt != null" >
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null" >
+                #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="winter.hell.auth.model.HellUser" >
+        update hell_user
+        <set >
+            <if test="mobile != null" >
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileCheck != null" >
+                mobile_check = #{mobileCheck,jdbcType=TINYINT},
+            </if>
+            <if test="gender != null" >
+                gender = #{gender,jdbcType=TINYINT},
+            </if>
+            <if test="headimage != null" >
+                headimage = #{headimage,jdbcType=VARCHAR},
+            </if>
+            <if test="headimageCheck != null" >
+                headimage_check = #{headimageCheck,jdbcType=TINYINT},
+            </if>
+            <if test="birthday != null" >
+                birthday = #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="email != null" >
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null" >
+                account = #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null" >
+                salt = #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null" >
+                signature = #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="inviterId != null" >
+                inviter_id = #{inviterId,jdbcType=INTEGER},
+            </if>
+            <if test="height != null" >
+                height = #{height,jdbcType=DECIMAL},
+            </if>
+            <if test="job != null" >
+                job = #{job,jdbcType=VARCHAR},
+            </if>
+            <if test="salary != null" >
+                salary = #{salary,jdbcType=DECIMAL},
+            </if>
+            <if test="hometownCityId != null" >
+                hometown_city_id = #{hometownCityId,jdbcType=INTEGER},
+            </if>
+            <if test="livingCityId != null" >
+                living_city_id = #{livingCityId,jdbcType=INTEGER},
+            </if>
+            <if test="isValid != null" >
+                is_valid = #{isValid,jdbcType=TINYINT},
+            </if>
+            <if test="registerAt != null" >
+                register_at = #{registerAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdAt != null" >
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null" >
+                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="winter.hell.auth.model.HellUser" >
+        update hell_user
+        set mobile = #{mobile,jdbcType=VARCHAR},
         mobile_check = #{mobileCheck,jdbcType=TINYINT},
-      </if>
-      <if test="gender != null" >
         gender = #{gender,jdbcType=TINYINT},
-      </if>
-      <if test="headimage != null" >
         headimage = #{headimage,jdbcType=VARCHAR},
-      </if>
-      <if test="headimageCheck != null" >
         headimage_check = #{headimageCheck,jdbcType=TINYINT},
-      </if>
-      <if test="birthday != null" >
         birthday = #{birthday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null" >
         account = #{account,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="salt != null" >
         salt = #{salt,jdbcType=VARCHAR},
-      </if>
-      <if test="signature != null" >
         signature = #{signature,jdbcType=VARCHAR},
-      </if>
-      <if test="inviterId != null" >
         inviter_id = #{inviterId,jdbcType=INTEGER},
-      </if>
-      <if test="height != null" >
         height = #{height,jdbcType=DECIMAL},
-      </if>
-      <if test="job != null" >
         job = #{job,jdbcType=VARCHAR},
-      </if>
-      <if test="salary != null" >
         salary = #{salary,jdbcType=DECIMAL},
-      </if>
-      <if test="hometownCityId != null" >
         hometown_city_id = #{hometownCityId,jdbcType=INTEGER},
-      </if>
-      <if test="livingCityId != null" >
         living_city_id = #{livingCityId,jdbcType=INTEGER},
-      </if>
-      <if test="registerAt != null" >
+        is_valid = #{isValid,jdbcType=TINYINT},
         register_at = #{registerAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdAt != null" >
         created_at = #{createdAt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatedAt != null" >
-        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="winter.hell.auth.model.HellUser" >
-    update hell_user
-    set mobile = #{mobile,jdbcType=VARCHAR},
-      mobile_check = #{mobileCheck,jdbcType=TINYINT},
-      gender = #{gender,jdbcType=TINYINT},
-      headimage = #{headimage,jdbcType=VARCHAR},
-      headimage_check = #{headimageCheck,jdbcType=TINYINT},
-      birthday = #{birthday,jdbcType=TIMESTAMP},
-      email = #{email,jdbcType=VARCHAR},
-      account = #{account,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      salt = #{salt,jdbcType=VARCHAR},
-      signature = #{signature,jdbcType=VARCHAR},
-      inviter_id = #{inviterId,jdbcType=INTEGER},
-      height = #{height,jdbcType=DECIMAL},
-      job = #{job,jdbcType=VARCHAR},
-      salary = #{salary,jdbcType=DECIMAL},
-      hometown_city_id = #{hometownCityId,jdbcType=INTEGER},
-      living_city_id = #{livingCityId,jdbcType=INTEGER},
-      register_at = #{registerAt,jdbcType=TIMESTAMP},
-      created_at = #{createdAt,jdbcType=TIMESTAMP},
-      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="queryUserInfoByMobile" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT
-    <include refid="Base_Column_List" />
-    FROM hell_user
-    WHERE mobile = #{mobile, jdbcType=VARCHAR}
-  </select>
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="queryUserInfoByMobile" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM hell_user
+        WHERE mobile = #{mobile, jdbcType=VARCHAR}
+    </select>
 </mapper>

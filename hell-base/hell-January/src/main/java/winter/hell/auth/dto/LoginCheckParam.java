@@ -5,16 +5,16 @@ package winter.hell.auth.dto;
  */
 public class LoginCheckParam {
 
-    private String user_name;
+    private String mobile;
 
     private String password;
 
-    public String getUser_name() {
-        return user_name;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getPassword() {
@@ -25,23 +25,19 @@ public class LoginCheckParam {
         this.password = password;
     }
 
-    public LoginCheckParam(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public LoginCheckParam(String user_name, String password) {
-        this.user_name = user_name;
-        this.password = password;
-    }
-
     public LoginCheckParam() {
 
     }
 
+    public LoginCheckParam(String mobile, String password) {
+        this.mobile = mobile;
+        this.password = password;
+    }
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("LoginParam{");
-        sb.append("user_name='").append(user_name).append('\'');
+        final StringBuilder sb = new StringBuilder("LoginCheckParam{");
+        sb.append("mobile='").append(mobile).append('\'');
         sb.append(", password='").append(password).append('\'');
         sb.append('}');
         return sb.toString();

@@ -29,4 +29,10 @@ public enum HellAuthExceptionCode implements IExceptionCode{
     @Desc(value="该手机号码已被注册",code = "50007")
     ERROR_DUPLICATED_MOBILE,
 
+    @Desc(value="MD5加密失败",code = "50008")
+    ERROR_MD5_ENCRYPTION,
+
+    @Desc(value="登录验证失败",code = "50009")
+    ERROR_LOGIN_CHECK,
+
 }
