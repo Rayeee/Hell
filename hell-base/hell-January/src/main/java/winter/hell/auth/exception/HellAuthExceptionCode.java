@@ -8,6 +8,9 @@ import winter.hell.exception.IExceptionCode;
  */
 public enum HellAuthExceptionCode implements IExceptionCode{
 
+    @Desc(value="系统异常",code = "50000")
+    ERROR_SYSTEM,
+
     @Desc(value="必填项不能为空",code = "50001")
     REQUIRE_NOT_NULL,
 
@@ -32,7 +35,10 @@ public enum HellAuthExceptionCode implements IExceptionCode{
     @Desc(value="MD5加密失败",code = "50008")
     ERROR_MD5_ENCRYPTION,
 
-    @Desc(value="登录验证失败",code = "50009")
+    @Desc(value="账号密码错误",code = "50009")
     ERROR_LOGIN_CHECK,
+
+    @Desc(value="该手机尚未注册",code = "50010")
+    ERROR_UNKNOWN_MOBILE,
 
 }

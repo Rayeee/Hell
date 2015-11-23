@@ -6,6 +6,8 @@ import winter.hell.auth.dto.LoginCheckParam;
 import winter.hell.auth.dto.RegisterParam;
 import winter.hell.auth.exception.HellAuthServiceException;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by ZGY on 15/11/21.
  */
@@ -32,6 +34,15 @@ public interface IHellAuthLoginService {
      * @return
      * @throws HellAuthServiceException
      */
-    LoginCheckDto loginCheck(LoginCheckParam loginCheckParam) throws HellAuthServiceException;
+    LoginCheckDto loginCheck(LoginCheckParam loginCheckParam, HttpServletRequest request) throws HellAuthServiceException;
+
+    /**
+     * 生成token
+     * @param id
+     * @param mobile
+     * @return
+     * @throws HellAuthServiceException
+     */
+    String generateToken(Integer id, String mobile, HttpServletRequest request) throws HellAuthServiceException;
 
 }

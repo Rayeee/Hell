@@ -12,6 +12,7 @@ import winter.hell.auth.dto.LoginCheckParam;
 import winter.hell.auth.dto.RegisterParam;
 import winter.hell.auth.exception.HellAuthServiceException;
 import winter.hell.auth.service.IHellAuthLoginService;
+import winter.hell.util.ServletUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -46,9 +47,13 @@ public class UserLoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelAndView login(@RequestBody LoginCheckParam loginCheckParam, HttpSession session){
-        logger.info("user login and the username is {}", loginCheckParam.getUser_name());
-
+    public ModelAndView login(@RequestBody LoginCheckParam loginCheckParam, HttpServletRequest request) throws HellAuthServiceException{
+        logger.info("user login and the mobile is {}", loginCheckParam.getMobile());
+        try{
+            hellAuthLoginService.loginCheck(loginCheckParam, request);
+        }catch (HellAuthServiceException e){
+            throw e;
+        }
         ModelAndView mav = new ModelAndView("/pages/index");
         return mav;
     }

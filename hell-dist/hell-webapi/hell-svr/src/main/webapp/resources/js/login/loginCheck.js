@@ -4,7 +4,7 @@
 /* 该文件用于实现用户登录，包括cookie，token等验证。 */
 
 /* 本机调用地址 */
-window.base_url = "http://localhost:8080/hell-webapi"
+window.base_url = "http://127.0.0.1:8080/hell-webapi"
 
 $(function(){
     /* 登陆按钮点击事件 */
@@ -42,7 +42,7 @@ function login() {
     //密码
     var password = hex_md5($("#password").val());
     var request = {
-        user_name:userName,
+        mobile:userName,
         password:password
     };
     var requestStr = $.toJSON(request);
@@ -54,7 +54,7 @@ function login() {
         contentType:"application/json",
         success:function(data){
             //将cookie中的token存入cookie
-            alert(123);
+            alert(data);
         }
     })
 }

@@ -7,6 +7,8 @@ public class HellSession {
 
     private Integer userId;
 
+    private String mobile;
+
     private String token;
 
     private Integer loginAccount;
@@ -37,6 +39,14 @@ public class HellSession {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getToken() {
@@ -107,9 +117,10 @@ public class HellSession {
 
     }
 
-    public HellSession(Long id, Integer userId, String token, Integer loginAccount, String userEquipment, String userOs, String userMac, Timestamp expireTime, Timestamp createdAt, Timestamp updatedAt) {
+    public HellSession(Long id, Integer userId, String mobile, String token, Integer loginAccount, String userEquipment, String userOs, String userMac, Timestamp expireTime, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.userId = userId;
+        this.mobile = mobile;
         this.token = token;
         this.loginAccount = loginAccount;
         this.userEquipment = userEquipment;
@@ -120,11 +131,14 @@ public class HellSession {
         this.updatedAt = updatedAt;
     }
 
+
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("HellSession{");
         sb.append("id=").append(id);
         sb.append(", userId=").append(userId);
+        sb.append(", mobile='").append(mobile).append('\'');
         sb.append(", token='").append(token).append('\'');
         sb.append(", loginAccount=").append(loginAccount);
         sb.append(", userEquipment='").append(userEquipment).append('\'');
