@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import winter.hell.auth.dto.LoginCheckDto;
 import winter.hell.auth.dto.LoginCheckParam;
 import winter.hell.auth.dto.RegisterParam;
 import winter.hell.auth.exception.HellAuthServiceException;
 import winter.hell.auth.service.IHellAuthLoginService;
+import winter.hell.framework.ResponseEntity;
 import winter.hell.util.ServletUtils;
 
 import javax.annotation.Resource;
@@ -47,15 +49,15 @@ public class UserLoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelAndView login(@RequestBody LoginCheckParam loginCheckParam, HttpServletRequest request) throws HellAuthServiceException{
+    public ResponseEntity<LoginCheckDto> login(@RequestBody LoginCheckParam loginCheckParam, HttpServletRequest request) throws HellAuthServiceException{
         logger.info("user login and the mobile is {}", loginCheckParam.getMobile());
+        LoginCheckDto loginCheckDto = null;
         try{
-            hellAuthLoginService.loginCheck(loginCheckParam, request);
+            loginCheckDto = hellAuthLoginService.loginCheck(loginCheckParam, request);
         }catch (HellAuthServiceException e){
             throw e;
         }
-        ModelAndView mav = new ModelAndView("/pages/index");
-        return mav;
+        return ResponseEntity.success(loginCheckDto);
     }
 
     @RequestMapping(value="/pictures",method=RequestMethod.GET)

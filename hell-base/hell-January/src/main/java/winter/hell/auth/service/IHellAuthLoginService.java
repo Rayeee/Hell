@@ -37,7 +37,7 @@ public interface IHellAuthLoginService {
     LoginCheckDto loginCheck(LoginCheckParam loginCheckParam, HttpServletRequest request) throws HellAuthServiceException;
 
     /**
-     * 生成token
+     * 生成token，入库
      * @param id
      * @param mobile
      * @return

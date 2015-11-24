@@ -76,7 +76,7 @@ public class HellAuthLoginServiceImpl implements IHellAuthLoginService{
     @Override
     public LoginCheckDto loginCheck(LoginCheckParam loginCheckParam, HttpServletRequest request) throws HellAuthServiceException {
         logger.info("loginCheck and the data is {}", loginCheckParam);
-        LoginCheckDto loginCheckDto = null;
+        LoginCheckDto loginCheckDto = new LoginCheckDto();
         String mobile = loginCheckParam.getMobile();
         String password = loginCheckParam.getPassword();    //md5
         HellUser hellUser;
@@ -87,6 +87,7 @@ public class HellAuthLoginServiceImpl implements IHellAuthLoginService{
             throw new HellAuthServiceException(HellAuthExceptionCode.ERROR_QUERY_USERINFO_BY_MOBILE);
         }
         if (hellUser == null){
+            //该手机号尚未注册
             logger.info("unknown mobile of {}", loginCheckParam.getMobile());
             throw new HellAuthServiceException(HellAuthExceptionCode.ERROR_UNKNOWN_MOBILE);
         }
@@ -102,7 +103,8 @@ public class HellAuthLoginServiceImpl implements IHellAuthLoginService{
         if(hellUser.getPassword().equals(afterPassword)){
             //验证通过，生成token入库，返回前端
             Integer userId = hellUser.getId();
-            generateToken(userId, mobile, request);
+            String token =  generateToken(userId, mobile, request);
+            loginCheckDto.setToken(token);
             return loginCheckDto;
         }else{
             //验证失败

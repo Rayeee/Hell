@@ -16,8 +16,8 @@
 
     <jsp:include page="../common/header.jsp"/>
     <script type="text/javascript">
-        //localStorage.setItem("token","123");
-        document.cookie = "username=John Doe";
+//        localStorage.setItem("token","123");
+//        document.cookie = "username=John Doe";
     </script>
 </head>
 
