@@ -17,6 +17,7 @@
 
     <modules>
         <module>hell-January-impl</module>
+        <module>hell-message-impl</module>
 
         <module>../hell-dist/hell-webapi</module>
 

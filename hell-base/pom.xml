@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>winter</groupId>
     <artifactId>hell-base</artifactId>
     <packaging>pom</packaging>
@@ -29,11 +28,11 @@
         <hibernate-validator-version>5.1.0.Final</hibernate-validator-version>
 
     </properties>
-
     <modules>
         <module>hell-common</module>
         
         <module>hell-January</module>
+        <module>hell-message</module>
         <module>../hell-impl</module>
     </modules>
 
