@@ -27,6 +27,19 @@
             <artifactId>hell-message</artifactId>
             <version>${hell.version}</version>
         </dependency>
+
+        <!-- rabbit mq-->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>${rabbit.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>${spring-rabbit.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

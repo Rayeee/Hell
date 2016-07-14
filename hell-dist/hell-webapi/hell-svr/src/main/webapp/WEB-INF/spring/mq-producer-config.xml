@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/rabbit
+                http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd">
+
+
+    <!-- 连接服务配置  -->
+    <rabbit:connection-factory id="connectionFactory" host="${rabbit_host}" username="${rabbit_username}"
+                               password="${rabbit_password}" port="${rabbit_port}" />
+
+    <rabbit:admin connection-factory="
+    tory"/>
+
+    <!-- queue 队列声明-->
+    <rabbit:queue id="anubis.mq.tracelog.queue" durable="true" auto-delete="false" exclusive="false" name="anubis.mq.tracelog.queue"/>
+
+    <!-- exchange queue binging key 绑定 -->
+    <rabbit:direct-exchange name="anubis-mq-tracelog-exchange" durable="true" auto-delete="false" id="anubis-mq-tracelog-exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="anubis.mq.tracelog.queue" key="anubis-tracelog-key"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <!-- spring amqp默认的是jackson 的一个插件,目的将生产者生产的数据转换为json存入消息队列-->
+    <bean id="jsonMessageConverter" class="me.ele.anubis.innermq.converter.AnubisMessageConverter"></bean>
+
+    <!-- spring template声明  message-converter="jsonMessageConverter"-->
+    <rabbit:template exchange="anubis-mq-tracelog-exchange" id="amqpTemplate"  connection-factory="connectionFactory"
+                      routing-key="anubis-tracelog-key"/>
+
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto" concurrency="4">
+        <rabbit:listener queues="anubis.mq.tracelog.queue" ref="queueOneLitener"/>
+    </rabbit:listener-container>
+
+    <bean class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" id="taskExecutor">
+        <property name="corePoolSize" value="5"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="WaitForTasksToCompleteOnShutdown" value="true"/>
+    </bean>
+
+    <bean id="queueOneLitener" class="me.ele.anubis.innermq.listener.InnerMqListener"></bean>
+</beans>
