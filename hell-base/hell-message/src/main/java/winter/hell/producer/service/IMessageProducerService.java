@@ -5,6 +5,6 @@ package winter.hell.producer.service;
  */
 public interface IMessageProducerService {
 
-    <E> boolean writeInnerQueue(E msgObj);
+    <E> boolean writeWithRoutingKey(String routingKey, E msgObj);
 
 }

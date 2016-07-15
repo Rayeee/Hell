@@ -14,6 +14,6 @@ public class HellMessageHandler {
     private Logger logger = LoggerFactory.getLogger(HellMessageHandler.class);
 
     public void handle(String message) throws HellServiceException {
-
+        logger.info("get a message:{}", message);
     }
 }

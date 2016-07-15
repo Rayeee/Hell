@@ -48,4 +48,10 @@ public class HellSystemException extends RuntimeException{
         this.errorCode = ExceptionHelper.getCode(code);
         this.errorMessage = this.getMessage();
     }
+
+    public HellSystemException(String code, String message){
+        super(code);
+        this.errorCode = code;
+        this.errorMessage = message;
+    }
 }

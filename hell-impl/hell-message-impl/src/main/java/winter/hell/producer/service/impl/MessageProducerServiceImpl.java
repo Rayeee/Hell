@@ -14,16 +14,14 @@ public class MessageProducerServiceImpl implements IMessageProducerService{
 
     Logger logger = LoggerFactory.getLogger(MessageProducerServiceImpl.class);
 
-    private static final String DELAY_ROUTING_KEY = "";
-
     @Autowired
     private AmqpTemplate amqpTemplate;
 
     @Override
-    public <E> boolean writeInnerQueue(E msgObj) {
+    public <E> boolean writeWithRoutingKey(String routingKey, E msgObj) {
         String message = JsonHelper.transObjToJsonString(msgObj);
         try {
-            amqpTemplate.convertAndSend(DELAY_ROUTING_KEY, message.getBytes());
+            amqpTemplate.convertAndSend(routingKey, message.getBytes());
         }catch (Exception e){
             return false;
         }
