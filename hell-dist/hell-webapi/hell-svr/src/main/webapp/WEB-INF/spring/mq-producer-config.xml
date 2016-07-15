@@ -40,5 +40,5 @@
         <rabbit:listener queues="hell.queue" ref="queueOneLitener"/>
     </rabbit:listener-container>
 
-    <bean id="queueOneLitener" class="me.ele.anubis.innermq.listener.InnerMqListener"></bean>
+    <bean id="queueOneLitener" class="winter.hell.producer.listener.HellMessageListener"></bean>
 </beans>

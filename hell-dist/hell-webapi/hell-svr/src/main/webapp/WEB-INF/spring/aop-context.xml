@@ -10,6 +10,7 @@
                http://www.springframework.org/schema/aop/spring-aop-4.0.xsd ">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 
 	<!--<bean-->
 		<!--class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->

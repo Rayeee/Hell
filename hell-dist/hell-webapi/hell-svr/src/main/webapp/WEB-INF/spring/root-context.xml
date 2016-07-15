@@ -36,12 +36,11 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
     <bean id="webAPISecurityFilter" class="winter.hell.framework.WebAPISecurityFilter"/>
 
-    <import resource="database-config.xml"></import>
+    <import resource="database-config.xml"/>
 
-    <import resource="mq-config.xml"/>
+    <import resource="mq-producer-config.xml"/>
 
-    <!--<import resource="mq-producer-config.xml"/>-->
-
+    <import resource="aop-context.xml"/>
 
 </beans>
 
