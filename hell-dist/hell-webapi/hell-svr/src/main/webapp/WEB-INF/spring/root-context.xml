@@ -10,14 +10,16 @@ http://www.springframework.org/schema/context/spring-context.xsd
 http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
     <!-- Root Context: defines shared resources visible to all other web components -->
-    <context:component-scan base-package="winter.hell.**.service.impl"/>
+    <context:component-scan base-package="winter.hell.*">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding">
             <value>utf-8</value>
         </property>
     </bean>
-    
+
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -30,10 +32,16 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
     </bean>
 
     <!-- 对模型视图名称的解析，在请求时模型视图名称添加前后缀 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp"/>
 
     <bean id="webAPISecurityFilter" class="winter.hell.framework.WebAPISecurityFilter"/>
 
     <import resource="database-config.xml"></import>
+
+    <import resource="mq-config.xml"/>
+
+    <!--<import resource="mq-producer-config.xml"/>-->
+
+
 </beans>
 

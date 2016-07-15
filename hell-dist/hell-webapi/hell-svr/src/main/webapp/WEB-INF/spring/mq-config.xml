@@ -14,31 +14,15 @@
 
     <!-- 连接服务配置  -->
     <rabbit:connection-factory id="connectionFactory" host="${rabbit_host}" username="${rabbit_username}"
-                               password="${rabbit_password}" port="${rabbit_port}" />
+                               password="${rabbit_password}" port="${rabbit_port}"/>
 
-    <rabbit:admin connection-factory="connectionFactory"/>
-
-    <!-- queue 队列声明-->
+    <!--<rabbit:admin connection-factory="orderStatusConnectionFactory"/>-->
     <rabbit:queue id="hell.queue" durable="true" auto-delete="false" exclusive="false" name="hell.queue"/>
-
-    <!-- exchange queue binging key 绑定 -->
-    <rabbit:direct-exchange name="hell-exchange" durable="true" auto-delete="false" id="hell-exchange">
-        <rabbit:bindings>
-            <rabbit:binding queue="hell.queue" key="hell-key"/>
-        </rabbit:bindings>
-    </rabbit:direct-exchange>
-
-    <!-- spring amqp默认的是jackson 的一个插件,目的将生产者生产的数据转换为json存入消息队列-->
-    <!--<bean id="jsonMessageConverter" class="me.ele.anubis.innermq.converter.AnubisMessageConverter"></bean>-->
-
-    <!-- spring template声明  message-converter="jsonMessageConverter"-->
-    <rabbit:template exchange="hell-exchange" id="amqpTemplate"  connection-factory="connectionFactory"
-                      routing-key="hell-key"/>
 
     <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
     <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto" concurrency="4">
-        <rabbit:listener queues="hell.queue" ref="queueOneLitener"/>
+        <rabbit:listener queues="hell.queue" ref="hellListener"/>
     </rabbit:listener-container>
 
-    <bean id="queueOneLitener" class="me.ele.anubis.innermq.listener.InnerMqListener"></bean>
+    <bean id="hellListener" class="winter.hell.producer.listener.HellMessageListener"></bean>
 </beans>
