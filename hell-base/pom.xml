@@ -33,7 +33,7 @@
     </properties>
     <modules>
         <module>hell-common</module>
-        
+
         <module>hell-January</module>
         <module>hell-message</module>
         <module>../hell-impl</module>
@@ -73,6 +73,11 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.0.13.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.4.9</version>
         </dependency>
 
     </dependencies>
