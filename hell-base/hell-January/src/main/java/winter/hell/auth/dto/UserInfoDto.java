@@ -181,6 +181,10 @@ public class UserInfoDto {
 
     }
 
+    public UserInfoDto(String mobile) {
+        this.mobile = mobile;
+    }
+
     public UserInfoDto(String mobile, Integer mobile_check, Integer gender, String headimage, Integer headimage_check, Long birthday, String email, String account, String salt, String signature, Integer inviter_id, BigDecimal height, String job, String salary, Integer hometown_city_id, Integer living_city_id, Long register_at) {
         this.mobile = mobile;
         this.mobile_check = mobile_check;
