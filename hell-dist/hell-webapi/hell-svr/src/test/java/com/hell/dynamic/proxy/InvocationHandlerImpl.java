@@ -1,8 +1,6 @@
 package com.hell.dynamic.proxy;
 
 import com.hell.dynamic.impl.ElectricCar;
-import org.springframework.cglib.proxy.MethodInterceptor;
-import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

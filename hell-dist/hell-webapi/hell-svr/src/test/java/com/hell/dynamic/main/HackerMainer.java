@@ -2,7 +2,6 @@ package com.hell.dynamic.main;
 
 import com.hell.dynamic.impl.Programmer;
 import com.hell.dynamic.proxy.Hacker;
-import com.hell.dynamic.proxy.InvocationHandlerImpl;
 import org.springframework.cglib.proxy.Enhancer;
 
 /**
